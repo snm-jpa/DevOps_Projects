@@ -59,7 +59,7 @@ function populateTodosTable() {
     }
 
     // Step 3: Call the open() method
-    xhr.open("POST", "http://localhost:8080/Ers_System/viewReimbursement.ajax");
+    xhr.open("POST", "/Ers_System/viewReimbursement.ajax");
 
     // Step 4: Call the send() method
     xhr.send();
