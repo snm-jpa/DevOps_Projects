@@ -8,14 +8,17 @@
 </head>
 <body>
 	
-			
+		
+		<h6> General Employee Info</h6>
+	<%@ page import="com.revature.model.Employee" %>
+	<% Employee employee = (Employee) request.getSession().getAttribute("authorizedUser"); %>
+	<%request.getSession().removeAttribute("authorizedUser"); %>
+	
+	
 	<% session.invalidate(); %>
-	<h3> You are successfully logged out </h3>
+	<h3> You are logged out </h3>
 	<a href="index.jsp">Go to Login Page</a>
 	
 	
-	<% request.removeAttribute("authorizedUser"); %>
-	
-			
 </body>
 </html>

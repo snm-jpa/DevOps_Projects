@@ -18,7 +18,7 @@ public class ConnectionUtil {
 	public static Connection getConnection() {
 		System.out.println("inside getConnection");
 			Properties props =  new Properties();
-			try(InputStream in = new FileInputStream("C:\\Users\\abj\\Documents\\STS-Projects\\Ers_System\\src\\main\\resources\\db.properties")) {
+			try(InputStream in = ConnectionUtil.class.getClassLoader().getResourceAsStream("db.properties")) {
 				props.load(in);
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				return DriverManager.getConnection(props.getProperty("jdbc.url"), props.getProperty("jdbc.username"), props.getProperty("jdbc.password"));
@@ -39,18 +39,5 @@ public class ConnectionUtil {
 		return null;
 	}
 
-	public static void main(String[] args) {
-		Connection conn = ConnectionUtil.getConnection();
-		System.out.println(conn);
-		
-		try {
-			conn.close();
-			
-		} catch (SQLException sqle) {
-			System.err.println(sqle.getMessage());
-			System.err.println("SQL STATE" + sqle.getSQLState());
-			System.err.println("Error Code" + sqle.getErrorCode());
-			
-		}
-	}
 }
+
